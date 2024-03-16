@@ -21,3 +21,5 @@ move_files(desktop_path, os.path.join(desktop_path, "PDF FILES"), ".pdf")
 move_files(desktop_path, os.path.join(desktop_path, "JPG FILES"), ".jpg")
 
 move_files(desktop_path, os.path.join(desktop_path, "ZIP FILES"), ".zip")
+
+move_files(desktop_path, os.path.join(desktop_path, "PNG FILES"), ".png")
