@@ -7,7 +7,7 @@ customtkinter.set_default_color_theme("dark-blue")
 root = customtkinter.CTk()
 root.geometry("500x300")
 
-desktop_path = "C:\\Users\\Hasan\\Desktop"
+desktop_path = "C:\\Users\\test\\Desktop"
 
 
 def move_files(source_dir, target_dir, extension):
@@ -20,18 +20,26 @@ def move_files(source_dir, target_dir, extension):
             shutil.move(os.path.join(source_dir, file), target_dir)
 
 
-move_files(desktop_path, os.path.join(desktop_path, "TXT FILES"), ".txt")
-
-move_files(desktop_path, os.path.join(desktop_path, "PDF FILES"), ".pdf")
-
-move_files(desktop_path, os.path.join(desktop_path, "JPG FILES"), ".jpg")
-
-move_files(desktop_path, os.path.join(desktop_path, "ZIP FILES"), ".zip")
-
-move_files(desktop_path, os.path.join(desktop_path, "PNG FILES"), ".png")
+def organize_files():
+    source_dir = dir_entry.get()  # Retrieve the directory from the entry field
+    move_files(source_dir, os.path.join(source_dir, "TXT FILES"), ".txt")
+    move_files(source_dir, os.path.join(source_dir, "PDF FILES"), ".pdf")
+    move_files(source_dir, os.path.join(source_dir, "JPG FILES"), ".jpg")
+    move_files(source_dir, os.path.join(source_dir, "ZIP FILES"), ".zip")
+    move_files(source_dir, os.path.join(source_dir, "PNG FILES"), ".png")
 
 
-frame= customtkinter.CTkFrame(master=root)
+frame = customtkinter.CTkFrame(master=root)
 frame.pack(pady=20, padx=60, fill="both", expand=True)
+
+label = customtkinter.CTkLabel(master=frame, text="File Organizer")
+label.pack(padx=10, pady=30)
+
+dir_entry = customtkinter.CTkEntry(master=frame, placeholder_text="Desktop Directory", width=200)
+dir_entry.insert(0, desktop_path)  # Insert desktop path into the entry field
+dir_entry.pack(padx=10, pady=30)
+
+organize_button = customtkinter.CTkButton(frame, text="Organize Files", command=organize_files)
+organize_button.pack(padx=10, pady=10)
 
 root.mainloop()
