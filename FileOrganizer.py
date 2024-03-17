@@ -1,5 +1,11 @@
 import os
 import shutil
+import customtkinter
+
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("dark-blue")
+root = customtkinter.CTk()
+root.geometry("500x300")
 
 desktop_path = "C:\\Users\\Hasan\\Desktop"
 
@@ -23,3 +29,9 @@ move_files(desktop_path, os.path.join(desktop_path, "JPG FILES"), ".jpg")
 move_files(desktop_path, os.path.join(desktop_path, "ZIP FILES"), ".zip")
 
 move_files(desktop_path, os.path.join(desktop_path, "PNG FILES"), ".png")
+
+
+frame= customtkinter.CTkFrame(master=root)
+frame.pack(pady=20, padx=60, fill="both", expand=True)
+
+root.mainloop()
